@@ -19,7 +19,7 @@ public class Controller {
     @Autowired
     private TicketTableRepository ticketTableRepository;
 
-    @PatchMapping
+    @PostMapping
     public ResponseEntity<TicketTable> createTicket(@RequestBody TicketTable ticket) {
         TicketTable savedTicket = ticketTableRepository.save(ticket);
         return ResponseEntity.ok(savedTicket);
