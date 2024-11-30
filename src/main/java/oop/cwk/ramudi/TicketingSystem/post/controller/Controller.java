@@ -30,4 +30,14 @@ public class Controller {
         return ticketTableRepository.findAll();
     }
 
+    @PostMapping("/{id}/add")
+    public TicketTable addTicket(@PathVariable int id, @RequestParam int count) {
+        return ticketService.addTicket(id, count);
+    }
+
+    @PostMapping ("/{id}/buy")
+    public TicketTable buyTicket (@PathVariable int id, @RequestParam int count) {
+        return ticketService.buyTicket(id, count);
+    }
+
 }
