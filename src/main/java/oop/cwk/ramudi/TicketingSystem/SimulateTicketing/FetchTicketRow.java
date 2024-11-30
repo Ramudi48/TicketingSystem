@@ -36,11 +36,11 @@ public class FetchTicketRow {
                 }else{
                     System.out.println("No ticket row found");
                 }
+            }catch (SQLException e) {
+                throw new RuntimeException("Error fetching ticket row.", e);
             }
         } catch (IOException e) {
             throw new RuntimeException("Error loading properties file.", e);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error fetching ticket row.", e);
         }
         return ticketRowValue;
     }
@@ -51,17 +51,17 @@ public class FetchTicketRow {
     }
 
     public int fetchLastRowReleseRate(){
-        fetchTicketRow("ticket_relese_rate");
+        fetchTicketRow("ticket_release_rate");
         return ticketRowValue;
     }
 
     public int fetchLastRowRetrievelRate(){
-        fetchTicketRow("ticket_retrievel_rate");
+        fetchTicketRow("customer_retrieval_rate");
         return ticketRowValue;
     }
 
     public int fetchLastRowMaxCapacity(){
-        fetchTicketRow("ticket_max_capacity");
+        fetchTicketRow("max_capacity");
         return ticketRowValue;
     }
 }

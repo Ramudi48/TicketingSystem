@@ -4,7 +4,7 @@ import oop.cwk.ramudi.TicketingSystem.PostingTool;
 
 public class Customer implements Runnable{
     private TicketPool ticketPool;
-    private FetchTicketRow fetchTicketRow;
+    FetchTicketRow fetchTicketRow = new FetchTicketRow();
     private int rowID= fetchTicketRow.fetchTicketRowID();
     private int customerRetrieveRate = fetchTicketRow.fetchLastRowRetrievelRate();
 
@@ -15,6 +15,8 @@ public class Customer implements Runnable{
     public void run() {
         for (int i=1 ;i<=customerRetrieveRate;i++){
             ticketPool.buyTicket();
+            buyingTicket();
+            System.out.println(Thread.currentThread().getName() + "Bought ticket: "+i);
 
         }
     }

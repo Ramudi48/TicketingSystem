@@ -25,7 +25,7 @@ public class PostingTool {
 
     }
 
-    public void SentPostReqWithJson(String urlString, String json) throws IOException {
+    public static void SendPostReqWithJson(String urlString, String json) throws IOException {
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
