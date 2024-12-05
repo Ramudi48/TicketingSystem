@@ -12,7 +12,7 @@ public class Simulate {
             Thread customerThread = new Thread(customer, "Customer Thread");
 
             vendorThread.start();
-            customerThread.start();
+            customerThread.start(); //start the thread
 
     }
 }
