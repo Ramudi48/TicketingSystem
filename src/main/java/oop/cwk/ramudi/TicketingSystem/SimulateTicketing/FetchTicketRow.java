@@ -64,5 +64,10 @@ public class FetchTicketRow {
         fetchTicketRow("max_capacity");
         return ticketRowValue;
     }
+
+    public int fetchLastRowTotalTickets(){
+        fetchTicketRow("total_tickets");
+        return ticketRowValue;
+    }
 }
 
