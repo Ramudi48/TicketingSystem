@@ -30,10 +30,10 @@ public class ConfigTickets {
     public static void configering() throws InputMismatchException {
         Scanner sc = new Scanner(System.in);
         System.out.println("******System Configuration******");
-        totalTickets = inputValue(sc,"Enter Total Tickets");
-        ticketReleaseRate = inputValue(sc,"Enter Ticket Release Rate");
-        customerRetrieverRate = inputValue(sc,"Enter Customer Retriver Rate");
-        maxTicketCapacity = inputValue(sc,"Enter Max Ticket Capacity");
+        totalTickets = inputValue(sc,"Enter Total Tickets:");
+        ticketReleaseRate = inputValue(sc,"Enter Ticket Release Rate:");
+        customerRetrieverRate = inputValue(sc,"Enter Customer Retriver Rate:");
+        maxTicketCapacity = inputValue(sc,"Enter Max Ticket Capacity:");
 
 
 
