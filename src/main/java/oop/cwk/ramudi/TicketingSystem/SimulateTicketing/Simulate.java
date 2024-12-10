@@ -1,18 +1,39 @@
 package oop.cwk.ramudi.TicketingSystem.SimulateTicketing;
 
+import java.util.logging.Logger;
+
 public class Simulate {
+
+    private static  TicketPool ticketPool = new TicketPool();
+
+    private static  Vendor vendor;
+    private static  Thread vendorThread;
+
+    private static  Customer customer;
+    private static  Thread customerThread;
+
+    private static Logger logger = Logger.getLogger("StartSimulation");
+
     public static void main(String[] args) {
+        startSimulation();
 
-        TicketPool ticketPool = new TicketPool();
+    }
 
-            Vendor vendor = new Vendor(ticketPool);
-            Thread vendorThread = new Thread(vendor, "Vendor Thread");
+    public static void startSimulation() {
 
-            Customer customer = new Customer(ticketPool);
-            Thread customerThread = new Thread(customer, "Customer Thread");
+        vendor = new Vendor(ticketPool);
+        vendorThread = new Thread(vendor,"Vendor Thread");
+        customer = new Customer(ticketPool);
+        customerThread = new Thread(customer,"Customer Thread");
 
-            vendorThread.start();
-            customerThread.start(); //start the thread
+        vendorThread.start();
+        customerThread.start();
+    }
 
+    public static Thread getCustomerThread(){
+        return customerThread;
+    }
+    public static Thread getVendorThread(){
+        return vendorThread;
     }
 }
