@@ -20,13 +20,16 @@ public class Vendor implements Runnable{
 
     @Override
     public void run() {
-        Logging logob = new Logging();
         for (int i = 1; i <= ticketReleseRate; i++) {
             ticketPool.addTicket(""+i);
             addingTicket();
             System.out.println(Thread.currentThread().getName() + "Added ticket: " + i);
             Logging.logMethod("Added ticket "+i,logger);
-
+            try {
+                PostingTool.SendPostReqWithJson("http://localhost:1200/api/logs",Thread.currentThread().getName() + " Added ticket: " + i);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -34,4 +37,5 @@ public class Vendor implements Runnable{
         String url  = "http://localhost:1200/api/tickets/"+rowID+"/add?count=1";
         PostingTool.sendPostReq(url);
     }
+
 }

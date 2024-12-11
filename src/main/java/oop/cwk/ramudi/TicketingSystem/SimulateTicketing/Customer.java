@@ -18,13 +18,16 @@ public class Customer implements Runnable{
 
     @Override
     public void run() {
-        Logging logobj = new Logging();
         for (int i=1 ;i<=customerRetrieveRate;i++){
             ticketPool.buyTicket();
             buyingTicket();
             System.out.println(Thread.currentThread().getName() + "Bought ticket: "+i);
             Logging.logMethod("Buying ticket "+i ,logger);
-
+            try {
+                PostingTool.SendPostReqWithJson("http://localhost:1200/api/logs",Thread.currentThread().getName() + " Bought ticket: " + i);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
 
         }
