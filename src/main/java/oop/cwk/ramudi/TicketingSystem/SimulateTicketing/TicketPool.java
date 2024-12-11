@@ -18,7 +18,7 @@ public class TicketPool {
         }
         TicketList.add(ticket);
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -34,7 +34,7 @@ public class TicketPool {
             }
         }
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

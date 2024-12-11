@@ -1,6 +1,10 @@
 package oop.cwk.ramudi.TicketingSystem.SimulateTicketing;
 
 import oop.cwk.ramudi.TicketingSystem.PostingTool;
+import oop.cwk.ramudi.TicketingSystem.init.table.Logging;
+
+import java.io.IOException;
+import java.util.logging.Logger;
 
 public class Vendor implements Runnable{
 
@@ -8,6 +12,7 @@ public class Vendor implements Runnable{
     FetchTicketRow fetchTicketRow = new FetchTicketRow();
     private int rowID = fetchTicketRow.fetchTicketRowID();
     private int ticketReleseRate = fetchTicketRow.fetchLastRowReleseRate();
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     public Vendor (TicketPool ticketPool){
         this.ticketPool = ticketPool;
@@ -15,10 +20,12 @@ public class Vendor implements Runnable{
 
     @Override
     public void run() {
-        for (int i = 0; i < ticketReleseRate; i++) {
+        Logging logob = new Logging();
+        for (int i = 1; i <= ticketReleseRate; i++) {
             ticketPool.addTicket(""+i);
             addingTicket();
             System.out.println(Thread.currentThread().getName() + "Added ticket: " + i);
+            Logging.logMethod("Added ticket "+i,logger);
 
         }
     }

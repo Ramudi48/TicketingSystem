@@ -17,11 +17,12 @@ public class TicketTable {
     private int maxCapacity;
 
 
-
+//default constructor
     public TicketTable() {
 
     }
 
+//getter setters
     public int getId() {
         return id;
     }
